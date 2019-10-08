@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { countUp, countDown, resetCount } from './actions';
+import uuid from 'uuidv4';
+
 
 export default function App() {
   const [userTask, setTask] = useState('');
@@ -12,7 +14,19 @@ export default function App() {
   const dispatchCountUp = () => dispatch(countUp);
   const dispatchCountDown = () => dispatch(countDown);
   const dispatchCountReset = () => dispatch(resetCount);
-  const dispatchTaskAdd = () => dispatch({ type: 'TASK_ADD', value: userTask });
+  const dispatchTaskAdd = () => {
+    
+    const value = {
+      id: uuid(),
+      text: userTask,
+    }
+
+    dispatch({
+      type: 'TASK_ADD',
+      value,
+    })
+  };
+  const dispatchTaskDelete = (id) => dispatch({ type: 'TASK_DELETE', value: id});
 
   return (
     <section>
@@ -33,7 +47,7 @@ export default function App() {
       </button>
       <ul>
         {
-          tasks.map((task) => <li>{ task }</li>)
+          tasks.map((task) => <li><button type="button" onClick={()=>dispatchTaskDelete(task.id)}>delete</button> { task.text }</li>)
         }
       </ul>
     </section>

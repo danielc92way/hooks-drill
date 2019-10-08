@@ -24,6 +24,8 @@ const tasksReducer = (state = [], action) => {
   switch (action.type) {
     case 'TASK_ADD':
       return [...state, action.value];
+    case 'TASK_DELETE':
+      return [...state.filter((task) => task.id !== action.value)];
     default:
       return state;
   }

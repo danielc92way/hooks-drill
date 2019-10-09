@@ -1,11 +1,22 @@
 .highlight {
-    background: darkgreen;
+    background: rgb(47, 176, 199);
     color:white;
     padding: 0.3rem .8rem;
     border-radius: 4px;
 }
 
+input {
+    padding: 0.30rem;
+}
+
 .padder {
     padding: 1.75rem;
-    border: 1px dashed #f3f3f3;
+    border: 1px solid #edecec;
+    margin-bottom: 1.75rem;
+}
+
+.container {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
 }

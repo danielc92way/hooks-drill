@@ -38,9 +38,9 @@ export default function App() {
     dispatch({ type: 'NAME_UPDATE', payload: { userName } });
   };
   return (
-    <section>
+    <section className="container">
       <div className="padder">
-        <Headline text="Headline header text" />
+        <Headline text="A random headline" />
       </div>
 
       <div className="padder">
@@ -70,7 +70,12 @@ export default function App() {
       </div>
 
       <div className="padder">
-        <textarea
+        <h3>
+          Number of tasks in global state&nbsp;
+          <span className="highlight">{tasks.length}</span>
+        </h3>
+        <input
+          size="50"
           type="text"
           name="task"
           onChange={(e) => setTask(e.target.value)}

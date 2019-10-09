@@ -13,8 +13,10 @@ const countReducer = (state = { count: 0 }, action) => {
   }
 };
 
-const nameReducer = (state = { name: 'daniel c' }, action) => {
+const nameReducer = (state = { name: '' }, action) => {
   switch (action.type) {
+    case 'NAME_UPDATE':
+      return { ...state, name: action.payload.userName };
     default:
       return state;
   }

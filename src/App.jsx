@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { countUp, countDown, resetCount } from "./actions";
-import uuid from "uuidv4";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import uuid from 'uuidv4';
+import { countUp, countDown, resetCount } from './actions';
+import './App.css';
 
 export default function App() {
   // Component Level state
-  const [userTask, setTask] = useState("");
-
+  const [userTask, setTask] = useState('');
+  const [userName, setUsername] = useState('daniel c!');
   // Retrieving global state
-  const count = useSelector(state => state.count.count);
-  const name = useSelector(state => state.name.name);
-  const tasks = useSelector(state => state.tasks);
+  const count = useSelector((state) => state.count.count);
+  const name = useSelector((state) => state.name.name);
+  const tasks = useSelector((state) => state.tasks);
 
   // Dispatcher methods
   const dispatch = useDispatch();
@@ -20,22 +21,33 @@ export default function App() {
   const dispatchTaskAdd = () => {
     const value = {
       id: uuid(),
-      text: userTask
+      text: userTask,
     };
 
     if (value.text.length > 0) {
       dispatch({
-        type: "TASK_ADD",
-        value
+        type: 'TASK_ADD',
+        value,
       });
     }
   };
-  const dispatchTaskDelete = id => dispatch({ type: "TASK_DELETE", value: id });
+  const dispatchTaskDelete = (id) => dispatch({ type: 'TASK_DELETE', value: id });
 
+  const dispatchUsername = () => {
+    dispatch({ type: 'NAME_UPDATE', payload: { userName } });
+  };
   return (
     <section>
-      <p>Name from state is {name}</p>
-      <p>{`The count is ${count}`}</p>
+      <h1>
+        The name from global state is&nbsp;
+        <span className="highlight">{name}</span>
+      </h1>
+      <input onChange={(e) => setUsername(e.target.value)} type="text" />
+      <button type="button" onClick={dispatchUsername}>Change name</button>
+      <h1>
+        The count from global state is&nbsp;
+        <span className="highlight">{count}</span>
+      </h1>
       <button type="button" onClick={dispatchCountUp}>
         Count Up
       </button>
@@ -49,18 +61,19 @@ export default function App() {
         <textarea
           type="text"
           name="task"
-          onChange={e => setTask(e.target.value)}
+          onChange={(e) => setTask(e.target.value)}
         />
       </div>
       <button type="button" onClick={dispatchTaskAdd}>
         dispatch task
       </button>
       <ul>
-        {tasks.map(task => (
+        {tasks.map((task) => (
           <li>
             <button type="button" onClick={() => dispatchTaskDelete(task.id)}>
               delete
-            </button>{" "}
+            </button>
+            {' '}
             {task.text}
           </li>
         ))}

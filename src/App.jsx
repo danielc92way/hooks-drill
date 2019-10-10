@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import uuid from 'uuidv4';
 import Headline from './Headline';
+import NameContainer from './components/NameContainer';
 import { countUp, countDown, resetCount } from './actions';
 import './App.css';
 
 export default function App() {
   // Component Level state
   const [userTask, setTask] = useState('');
-  const [userName, setUsername] = useState('');
+  
   // Retrieving global state
   const count = useSelector((state) => state.count.count);
-  const name = useSelector((state) => state.name.name);
+  
   const tasks = useSelector((state) => state.tasks);
 
   // Dispatcher methods
@@ -34,24 +35,14 @@ export default function App() {
   };
   const dispatchTaskDelete = (id) => dispatch({ type: 'TASK_DELETE', value: id });
 
-  const dispatchUsername = () => {
-    dispatch({ type: 'NAME_UPDATE', payload: { userName } });
-  };
+  
   return (
     <section className="container">
       <div className="padder">
         <Headline text="A random headline" />
       </div>
 
-      <div className="padder">
-        <h3>
-          The name from global state is&nbsp;
-          <span className="highlight">{name}</span>
-        </h3>
-        <input onChange={(e) => setUsername(e.target.value)} type="text" />
-        <br />
-        <button type="button" onClick={dispatchUsername}>Change name</button>
-      </div>
+      <NameContainer />
 
       <div className="padder">
         <h3>

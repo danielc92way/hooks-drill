@@ -8,7 +8,7 @@ import './App.css';
 export default function App() {
   return (
     <section className="container">
-      <Header />
+      <Header text="A header text" />
       <NameContainer />
       <CountContainer />
       <TasksContainer />

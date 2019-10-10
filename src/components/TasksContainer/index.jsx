@@ -27,19 +27,20 @@ export default function TasksContainer() {
       </h3>
       <input
         size="50"
+        placeholder="Enter a new task..."
         type="text"
         name="task"
         onChange={(e) => setTask(e.target.value)}
       />
       <br />
-      <button type="button" onClick={dispatchTaskAdd}>
+      <button className="button" type="button" onClick={dispatchTaskAdd}>
           dispatch task
       </button>
       <ul>
         {tasks.map((task) => (
           <li>
             <span className="highlight">{task.text}</span>
-            <button type="button" onClick={() => dispatchTaskDelete(task.id)}>
+            <button className="button" type="button" onClick={() => dispatchTaskDelete(task.id)}>
                 delete
             </button>
           </li>

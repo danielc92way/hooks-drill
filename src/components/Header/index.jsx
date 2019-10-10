@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 const Header = ({ text }) => (
   <div className="padder">
-    <h1>{ text }</h1>
+    <div style={{ textAlign: 'center' }}>
+      <h1>{ text }</h1>
+    </div>
+
   </div>
 );
 

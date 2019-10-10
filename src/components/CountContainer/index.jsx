@@ -16,13 +16,13 @@ export default function CountContainer() {
           The count from global state is&nbsp;
         <span className="highlight">{count}</span>
       </h3>
-      <button type="button" onClick={dispatchCountUp}>
+      <button className="button" type="button" onClick={dispatchCountUp}>
           Count Up
       </button>
-      <button type="button" onClick={dispatchCountDown}>
+      <button className="button" type="button" onClick={dispatchCountDown}>
           Count Down
       </button>
-      <button type="button" onClick={dispatchCountReset}>
+      <button className="button" type="button" onClick={dispatchCountReset}>
           Count Reset
       </button>
     </div>

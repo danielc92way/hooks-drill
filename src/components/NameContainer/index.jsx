@@ -15,9 +15,20 @@ export default function NameContainer() {
           The name from global state is&nbsp;
         <span className="highlight">{name}</span>
       </h3>
-      <input onChange={(e) => setUsername(e.target.value)} type="text" />
+      <input
+        placeholder="Enter a name..."
+        onChange={(e) => setUsername(e.target.value)}
+        type="text"
+      />
       <br />
-      <button type="button" onClick={dispatchUsername}>Change name</button>
+      <button
+        className="button"
+        type="button"
+        onClick={dispatchUsername}
+      >
+        Dispatch Name
+
+      </button>
     </div>
   );
 }

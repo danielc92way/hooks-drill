@@ -9,7 +9,7 @@ export default function CountContainer() {
     const dispatch = useDispatch();
     const dispatchCountUp = () => dispatch(countUp);
     const dispatchCountDown = () => dispatch(countDown);
-    const dispatchCountReset = () => dispatch(resetCount);
+       const dispatchCountReset = () => dispatch(resetCount);
     
     return (
       <div className="padder">

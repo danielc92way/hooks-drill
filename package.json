@@ -18,7 +18,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "rules": {
+      "no-console": 1
+    }
   },
   "browserslist": {
     "production": [

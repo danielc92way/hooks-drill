@@ -6,7 +6,6 @@ const Header = ({ text }) => (
     <div style={{ textAlign: 'center' }}>
       <h1>{ text }</h1>
     </div>
-
   </div>
 );
 

@@ -1,12 +1,20 @@
 import { combineReducers } from 'redux';
+import {
+  COUNT_UP,
+  COUNT_DOWN,
+  COUNT_RESET,
+  NAME_UPDATE,
+  TASK_ADD,
+  TASK_DELETE,
+} from 'constants';
 
 const countReducer = (state = { count: 0 }, action) => {
   switch (action.type) {
-    case 'COUNT_UP':
+    case COUNT_UP:
       return { ...state, count: state.count + 1 };
-    case 'COUNT_DOWN':
+    case COUNT_DOWN:
       return { ...state, count: state.count - 1 };
-    case 'RESET':
+    case COUNT_RESET:
       return { ...state, count: action.value };
     default:
       return state;
@@ -15,7 +23,7 @@ const countReducer = (state = { count: 0 }, action) => {
 
 const nameReducer = (state = { name: 'daniel c' }, action) => {
   switch (action.type) {
-    case 'NAME_UPDATE':
+    case NAME_UPDATE:
       return { ...state, name: action.payload.userName };
     default:
       return state;
@@ -24,9 +32,9 @@ const nameReducer = (state = { name: 'daniel c' }, action) => {
 
 const tasksReducer = (state = [], action) => {
   switch (action.type) {
-    case 'TASK_ADD':
+    case TASK_ADD:
       return [...state, action.value];
-    case 'TASK_DELETE':
+    case TASK_DELETE:
       return [...state.filter((task) => task.id !== action.value)];
     default:
       return state;

@@ -35,6 +35,11 @@ input {
     margin: 0 0.5rem 0.5rem 0;
 }
 
+.button--del {
+    font-size: 12px;
+    background: rgb(218, 59, 59);
+}
+
 .button:hover {
     transform: translatey(-2px);
     transition: 0.2s ease;

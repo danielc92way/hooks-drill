@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import uuid from 'uuidv4';
+import { useDispatch, useSelector } from 'react-redux';
+import { TASK_ADD, TASK_DELETE } from '../../constants';
 
-export default function TasksContainer() {
+function TasksContainer() {
   const [userTask, setTask] = useState('');
-  const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasks);
 
+  const dispatch = useDispatch();
   const dispatchTaskAdd = () => {
     const value = {
       id: uuid(),
@@ -14,10 +15,13 @@ export default function TasksContainer() {
     };
 
     if (value.text.length > 0) {
-      dispatch({ type: 'TASK_ADD', value });
+      dispatch({ type: TASK_ADD, value });
     }
   };
-  const dispatchTaskDelete = (id) => dispatch({ type: 'TASK_DELETE', value: id });
+
+  const dispatchTaskDelete = (id) => {
+    dispatch({ type: TASK_DELETE, value: id });
+  };
 
   return (
     <div className="padder">
@@ -40,7 +44,7 @@ export default function TasksContainer() {
         {tasks.map((task) => (
           <li>
             <span className="highlight">{task.text}</span>
-            <button className="button" type="button" onClick={() => dispatchTaskDelete(task.id)}>
+            <button className="button button--del" type="button" onClick={() => dispatchTaskDelete(task.id)}>
                 delete
             </button>
           </li>
@@ -49,3 +53,5 @@ export default function TasksContainer() {
     </div>
   );
 }
+
+export default TasksContainer;

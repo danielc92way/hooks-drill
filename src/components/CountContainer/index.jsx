@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { COUNT_UP, COUNT_DOWN, COUNT_RESET } from '../../constants';
 
-export default function CountContainer() {
+function CountContainer() {
   const count = useSelector((state) => state.count.count);
 
   const dispatch = useDispatch();
@@ -28,3 +28,5 @@ export default function CountContainer() {
     </div>
   );
 }
+
+export default CountContainer;

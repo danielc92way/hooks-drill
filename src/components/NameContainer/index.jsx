@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NAME_UPDATE } from '../../constants';
 
-export default function NameContainer() {
+function NameContainer() {
+  // Component state stores user input
   const [userName, setUsername] = useState('');
+
+  // Access global state for name
   const name = useSelector((state) => state.name.name);
+
+  // Dispatch method to change name
   const dispatch = useDispatch();
   const dispatchUsername = () => {
     dispatch({ type: NAME_UPDATE, payload: { userName } });
@@ -33,3 +38,5 @@ export default function NameContainer() {
     </div>
   );
 }
+
+export default NameContainer;

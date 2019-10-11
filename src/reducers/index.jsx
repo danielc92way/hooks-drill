@@ -6,7 +6,7 @@ import {
   NAME_UPDATE,
   TASK_ADD,
   TASK_DELETE,
-} from 'constants';
+} from '../constants';
 
 const countReducer = (state = { count: 0 }, action) => {
   switch (action.type) {

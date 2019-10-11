@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { NAME_UPDATE } from '../../constants';
 
 export default function NameContainer() {
   const [userName, setUsername] = useState('');
   const name = useSelector((state) => state.name.name);
   const dispatch = useDispatch();
   const dispatchUsername = () => {
-    dispatch({ type: 'NAME_UPDATE', payload: { userName } });
+    dispatch({ type: NAME_UPDATE, payload: { userName } });
   };
 
   return (
